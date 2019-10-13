@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    (function (win, doc) {
+      var docEl = doc.documentElement;
+      function setRemUnit () {
+        var docWidth = docEl.clientWidth;
+        var rem = docWidth / 7.5;
+        docEl.style.fontSize = rem + 'px';
+      }
+    
+      win.addEventListener('resize', function () {
+        setRemUnit();
+      }, false);
+      win.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+          setRemUnit();
+        }
+      }, false);
+    
+      setRemUnit();
+    
+      // if (win.devicePixelRatio && win.devicePixelRatio >= 2) {
+      //   var testEl = doc.createElement('div');
+      //   var fakeBody = doc.createElement('body');
+      //   testEl.style.border = '0.5px solid transparent';
+      //   fakeBody.appendChild(testEl);
+      //   docEl.appendChild(fakeBody);
+      //   if (testEl.offsetHeight === 1) {
+      //     docEl.classList.add('hairlines');
+      //   }
+      //   docEl.removeChild(fakeBody);
+      // }
+    }) (window, document);
+  </script>
+  <link rel="stylesheet" href="https://c.58cdn.com.cn/frs/fangfe/m-apartment/1.0/m.house.list.apartment_v20190925113145.css">
+  <link href="/index.css" rel="stylesheet"></head>
+<body>
+  <div id="app"></div>
+  <script src="/dll/dll.js"></script>
+<script type="text/javascript" src="/vendor/vendor.js"></script><script type="text/javascript" src="/vendor/common.js"></script><script type="text/javascript" src="/index.js"></script></body>
+</html>
