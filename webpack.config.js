@@ -131,6 +131,7 @@ module.exports = function(options) {
       // 创建 import 或 require 的别名
       alias: {
         '@src': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, './src')
         // 'vue': path.resolve(__dirname, './node_modules/vue/dist/vue.esm.js')
       }
     },

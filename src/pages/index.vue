@@ -1,5 +1,9 @@
 <template>
   <div class="index-box">
+    <div class="title-box">
+      
+    </div>
+    <div class="content-box"></div>
     index safdsfsf sdf 
     <div class="grid-box">
       <div class="item item1">
