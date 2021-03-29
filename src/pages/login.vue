@@ -20,13 +20,15 @@ export default {
     }
   },
   mounted() {
+    console.log('aaa', this.$router)
   },
   methods: {
     loginFn(){
       if (!this.userName || !this.password) {
         alert('输入用户名和密码')
       } else {
-        
+        localStorage.setItem('token', this.userName + this.password)
+        this.$router.go(-1)
       }
     }
   }

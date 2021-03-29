@@ -1,10 +1,9 @@
 <template>
   <div class="index-box">
-    <div class="title-box">
-      
-    </div>
-    <div class="content-box"></div>
-    index safdsfsf sdf 
+    <p>{{$store.state}}</p>
+    <button @click="$store.commit('syncChangeAge',10)">同步更改</button>
+    <button @click="$store.dispatch('asyncChangeAge',3)">异步更改</button>
+    <p>geter 取到的 age 是 {{$store.getters['a/getAge']}}</p>
     <div class="grid-box">
       <div class="item item1">
         <p>111111</p>
@@ -19,7 +18,7 @@
         <p>444</p>
       </div>
     </div>
-    grid end
+    <div style="margin: 20px 0; border-top: 1px solid; padding-top: 10px"></div>
     <div>
       <div class="btn" @click="redict">点我啊</div>
     </div>
@@ -29,7 +28,7 @@
 
 <script>
 import Stoage from '@src/utils/stoage.js'
-import tesss from '@src/utils/test.js'
+// import tesss from '@src/utils/test.js'
 export default {
   data() {
     return {
@@ -54,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    console.log('index.vue asd s', this.$route)
+    console.log('index.vue asd s', this.$store.getters)
   }
 }
 </script>
