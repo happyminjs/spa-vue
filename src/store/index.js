@@ -18,7 +18,6 @@ files.keys().forEach((key, index) => {
   modules[moduleName].namespaced = true
   rootModule.modules = modules
 });
-console.log(rootModule)
 const store = new Vuex.Store(rootModule);
 export default store;
 

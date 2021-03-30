@@ -1,10 +1,22 @@
 <template>
   <div class="index-box">
+    <swiper>
+      <swiper-item>
+        <div class="content-item" style="background:#f3a7a7">aaaa</div>
+      </swiper-item>
+      <swiper-item>
+        <div class="content-item" style="background:rgb(184 245 205)">bbbb</div>
+      </swiper-item>
+      <swiper-item>
+        <div class="content-item" style="background:#fff580">ccccc</div>
+      </swiper-item>
+    </swiper>
+    <button @click="showMessage">点我弹层</button>
     <p>{{$store.state}}</p>
     <button @click="$store.commit('syncChangeAge',10)">同步更改</button>
     <button @click="$store.dispatch('asyncChangeAge',3)">异步更改</button>
     <p>geter 取到的 age 是 {{$store.getters['a/getAge']}}</p>
-    <div class="grid-box">
+    <div class="grid-box" style="display:none">
       <div class="item item1">
         <p>111111</p>
       </div>
@@ -18,17 +30,24 @@
         <p>444</p>
       </div>
     </div>
-    <div style="margin: 20px 0; border-top: 1px solid; padding-top: 10px"></div>
+    <!-- <div style="margin: 20px 0; border-top: 1px solid; padding-top: 10px"></div>
     <div>
       <div class="btn" @click="redict">点我啊</div>
-    </div>
-    <div class="more"></div>
+    </div> -->
+    <!-- <div class="more"></div> -->
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+// import { Message } from '../components/toast/index.js'
+// import Message from '../components/toast/index.js'
+// Vue.use(Message, {duration: 1000})
+import swiper from '../components/swiper/index'
+Vue.use(swiper)
 import Stoage from '@src/utils/stoage.js'
 // import tesss from '@src/utils/test.js'
+
 export default {
   data() {
     return {
@@ -41,6 +60,16 @@ export default {
     }
   },
   methods: {
+    showMessage(){
+      // Message.info({
+      //   message: 'aaa',
+      //   duration: 3000
+      // })
+      this.$message.info({
+        message: 'bbbb',
+        duration: 3000
+      })
+    },
     redict() {
       // this.$router.push('/user/222/sdfwer')
       this.$router.push({
@@ -53,7 +82,17 @@ export default {
     }
   },
   mounted () {
-    console.log('index.vue asd s', this.$store.getters)
+    var Profile = Vue.extend({
+      template: '<p class="extend-template">{{firstName}} {{lastName}} aka {{alias}}</p>',
+      data: () =>{
+        return {
+          firstName: 'wwww',
+          lastName: 'sssss',
+          alias: 'rrrr'
+        }
+      }
+    })
+    new Profile().$mount('#extend-text')
   }
 }
 </script>

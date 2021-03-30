@@ -20,7 +20,6 @@ export default {
     // 基于 state 的数据处理，不改变state内数据，参数默认是 state
     // 组件内调用方式 $store.getters.getAge
     getAge(state, getters, rootState){
-      console.log('aaa module', state, getters, rootState)
       return state.age + 20
     },
     // 通过 return 一个 function 的方式，来传递参数
