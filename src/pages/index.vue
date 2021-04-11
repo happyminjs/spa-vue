@@ -1,5 +1,6 @@
 <template>
   <div class="index-box">
+    {{testName}}
     <swiper>
       <swiper-item>
         <div class="content-item" style="background:#f3a7a7">aaaa</div>
@@ -51,7 +52,18 @@ import Stoage from '@src/utils/stoage.js'
 export default {
   data() {
     return {
-      checkVal: false
+      checkVal: false,
+      testName: 'dddd',
+    }
+  },
+  computed: {
+    testName: {
+      get(){
+        return 'cccc'
+      },
+      set(val){
+        return 'eeeesss'
+      }
     }
   },
   watch: {
@@ -93,6 +105,7 @@ export default {
       }
     })
     new Profile().$mount('#extend-text')
+    console.log(this)
   }
 }
 </script>

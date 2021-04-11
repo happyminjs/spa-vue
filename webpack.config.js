@@ -142,6 +142,7 @@ module.exports = function(options) {
       host: '0.0.0.0',
       port: 3010,
       // open: true,
+      historyApiFallback: true
     }
   }
   return config;
