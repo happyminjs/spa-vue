@@ -10,7 +10,7 @@ routerFiles.keys().forEach((key, value) => {
   routers.push(...routerFiles(key).default)
 });
 let router = new Router({
-  mode: 'hash',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: routers
 })
