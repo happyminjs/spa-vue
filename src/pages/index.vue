@@ -1,6 +1,7 @@
 <template>
   <div class="index-box">
     {{testName}}
+    <!-- <img src="sdfdsewe" alt="" style="width: 100px;height:200px"> -->
     <swiper>
       <swiper-item>
         <div class="content-item" style="background:#f3a7a7">aaaa</div>
@@ -105,7 +106,8 @@ export default {
       }
     })
     new Profile().$mount('#extend-text')
-    console.log(this)
+    // console.log(this)
+    // throw new Error('index.vue erroorrrrrr')
   }
 }
 </script>

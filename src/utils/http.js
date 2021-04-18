@@ -8,6 +8,22 @@
 // axios 是基于Promise 的 ajax 库，我们一般会设置一些默认属性和拦截器
 import axios from 'axios'
 
+function interceptResponseError(instance) {
+  let response = instance.interceptors.response.use;
+  instance.interceptors.response.use = function(fulfilled, rejected){
+    let oldFulfilled = fulfilled;
+    let oldRejected = rejected;
+    fulfilled = function(...args) {
+      oldFulfilled.call(this, ...args);
+    }
+    rejected = function(...args) {
+      // 处理用户接口失败的上报
+      oldRejected.call(this, ...args);
+    }
+    return response.call(this, fulfilled, rejected)
+  }
+}
+
 class Http {
   constructor() {
     this.timeout = 3000
@@ -37,6 +53,7 @@ class Http {
   }
   request(options) {
     const instance = axios.create();
+    // interceptResponseError(instance)
     const opts = this.mergeOptions(options);
     this.setInterceptor(instance)
     return instance(opts)
