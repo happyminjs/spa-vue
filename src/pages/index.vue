@@ -2,17 +2,34 @@
   <div class="index-box">
     {{testName}}
     <!-- <img src="sdfdsewe" alt="" style="width: 100px;height:200px"> -->
-    <swiper>
-      <swiper-item>
-        <div class="content-item" style="background:#f3a7a7">aaaa</div>
-      </swiper-item>
-      <swiper-item>
-        <div class="content-item" style="background:rgb(184 245 205)">bbbb</div>
-      </swiper-item>
-      <swiper-item>
-        <div class="content-item" style="background:#fff580">ccccc</div>
-      </swiper-item>
-    </swiper>
+    <!-- <div class="swiper-container" ref="swiperContain">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="i in [1,2,3,4,5]" :key="i">
+          <img src="https://wos.58cdn.com.cn/cDazYxWcDHJ/picasso/75tj0as6.png" alt="">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div> -->
+    <div class="swiper-box">
+      <swiper>
+        <swiper-item>
+          <div class="content-item" style="background:#f3a7a7; height:100%">
+            <p>aaaa</p>
+          </div>
+        </swiper-item>
+        <swiper-item>
+          <div class="content-item" style="background:rgb(184 245 205); height:100%">
+            <p>bbbb</p>
+          </div>
+        </swiper-item>
+        <swiper-item>
+          <div class="content-item" style="background:#fff580; height:100%">
+            <p>cccc</p>
+          </div>
+        </swiper-item>
+      </swiper>
+    </div>
+    <ttt ref="ttttts"/>
     <button @click="showMessage">点我弹层</button>
     <p>{{$store.state}}</p>
     <button @click="$store.commit('syncChangeAge',10)">同步更改</button>
@@ -49,8 +66,13 @@ import swiper from '../components/swiper/index'
 Vue.use(swiper)
 import Stoage from '@src/utils/stoage.js'
 // import tesss from '@src/utils/test.js'
+import ttt from './ttt'
+import '@src/utils/swiper.js'
 
 export default {
+  components: {
+    ttt
+  },
   data() {
     return {
       checkVal: false,
@@ -95,6 +117,29 @@ export default {
     }
   },
   mounted () {
+    console.log('ttttts', this.$refs.ttttts)
+    var mySwiper = new Swiper(this.$refs.swiperContain, {
+      loop: false,
+      initialSlide: 2,
+      effect: 'coverflow', // Slide的切换 3D 效果
+      coverflowEffect: { // coverflow效果的参数
+        rotate: 60, // slide做3d旋转时Y轴的旋转角度
+        rotateDiff: 5,
+        stretch: 50, // 每个slide之间的拉伸值，越大slide靠得越紧
+        depth: 290, // slide的位置深度。值越大z轴距离越远，看起来越小
+        modifier: 1, // depth和rotate和stretch的倍率
+        slideShadows: false, // 是否开启slide阴影
+        scale: 1.5,
+        mask: true
+      },
+      centeredSlides: true, // 居中
+      slidesPerView: 'auto',
+      autoplay: false,
+      preventClicksPropagation: true, // 阻止click冒泡
+      observer: false, // 监测更新
+      observeParents:true, // 监测父级有更新
+    });
+    // console.log('aaaaa', Swiper.prototype)
     var Profile = Vue.extend({
       template: '<p class="extend-template">{{firstName}} {{lastName}} aka {{alias}}</p>',
       data: () =>{
@@ -112,7 +157,30 @@ export default {
 }
 </script>
 
+<style lang="less">
+.swiper-slide-mask-left, .swiper-slide-mask-right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.swiper-slide-mask-right {
+  background: linear-gradient(80deg, rgba(255, 255, 255,0.8) , rgba(0, 0, 0, 0) 80%);
+}
+.swiper-slide-mask-left{
+  background: linear-gradient(100deg,  rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255,0.8) 80%)
+}
+</style>
 <style lang="less" scoped>
+@import '../utils/swiper.min.css';
+.swiper-box {
+  width: 300px;
+  height: 250px;
+  border: 1px solid rgb(69, 1, 124);
+}
 .index-box {
   --text-color: #080;
   // color: var(--text-color);
@@ -169,4 +237,24 @@ export default {
     transform: rotate(-45deg);
   }
 }
+.swiper-container {
+  // margin-top: -59px;
+  z-index: 2;
+  width: 100%;
+  background-color: deeppink;
+}
+.swiper-slide {
+  position: relative;
+  width: 140px;
+  height: 189px;
+  img{
+    width: 140px;
+    height: 189px;
+  }
+}
+.swiper-wrapper {
+  width: 140px;
+  height: 189px;
+}
+
 </style>

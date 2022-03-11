@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted() {
-    console.log('aaa', this.$router)
+    // console.log('aaa', this.$router)
   },
   methods: {
     loginFn(){

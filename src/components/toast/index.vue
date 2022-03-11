@@ -15,7 +15,7 @@ export default {
     }
   },
   mounted(options){
-    console.log('aaaaaa', options)
+    // console.log('aaaaaa', options)
     this.id = 0; // 表示当前弹层的唯一标识
   },
   methods: {

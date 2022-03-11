@@ -14,7 +14,7 @@ export default {
     },
     delay: {
       type: Number,
-      default: 1000
+      default: 2000
     },
     initialIndex: {
       type: Number,
@@ -59,3 +59,12 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+</style>
